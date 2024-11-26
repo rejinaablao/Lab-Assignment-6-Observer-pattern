@@ -1,0 +1,29 @@
+class RealTimeNewsAgency implements NewsAgency {
+    private List<Subscriber> subscribers = new ArrayList<>();
+    private String latestNews;
+
+    @Override
+    public void subscribe(Subscriber subscriber) {
+        subscribers.add(subscriber);
+        System.out.println("A new subscriber has been added.");
+    }
+
+    @Override
+    public void unsubscribe(Subscriber subscriber) {
+        subscribers.remove(subscriber);
+        System.out.println("A subscriber has been removed.");
+    }
+
+    @Override
+    public void notifySubscribers() {
+        for (Subscriber subscriber : subscribers) {
+            subscriber.update(latestNews);
+        }
+    }
+
+    public void publishNews(String news) {
+        this.latestNews = news;
+        System.out.println("News Agency published: " + news);
+        notifySubscribers();
+    }
+}

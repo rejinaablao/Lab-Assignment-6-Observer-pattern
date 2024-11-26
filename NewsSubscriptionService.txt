@@ -1,0 +1,24 @@
+public class NewsSubscriptionService {
+    public static void main(String[] args) {
+       
+        RealTimeNewsAgency agency = new RealTimeNewsAgency();
+
+        
+        NewsSubscriber subscriber1 = new NewsSubscriber("Subscriber 1");
+        NewsSubscriber subscriber2 = new NewsSubscriber("Subscriber 2");
+        NewsSubscriber subscriber3 = new NewsSubscriber("Subscriber 3");
+
+        agency.subscribe(subscriber1);
+        agency.subscribe(subscriber2);
+
+        agency.publishNews("Breaking News: Market hits an all-time high!");
+
+        agency.subscribe(subscriber3);
+
+        agency.publishNews("Breaking News: Major storm incoming!");
+
+        agency.unsubscribe(subscriber1);
+
+        agency.publishNews("Breaking News: New tech breakthrough announced!");
+    }
+}
